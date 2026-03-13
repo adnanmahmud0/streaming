@@ -45,33 +45,41 @@ export function SectionCards() {
   ];
 
   return (
-    <div className="grid grid-cols-1 gap-4 px-4 lg:px-6 @xl/main:grid-cols-2 @5xl/main:grid-cols-4 dark:*:data-[slot=card]:bg-card">
-      {cards.map((card) => (
-        <Card
-          key={card.title}
-          className="bg-gradient-to-t from-primary/5 to-card shadow-xs border-none"
-        >
-          <CardHeader className="pb-2">
-            <CardDescription className="text-sm font-medium text-muted-foreground">
-              {card.title}
-            </CardDescription>
-            <CardTitle className="text-3xl font-bold tracking-tight">
-              {card.value}
-            </CardTitle>
-            <CardAction>
-              <div className="flex size-12 items-center justify-center rounded-2xl bg-muted/50 shadow-xs">
+    <div className="flex flex-col gap-8">
+      <div className="px-4 lg:px-6">
+        <h1 className="text-3xl font-black tracking-tight text-slate-900 uppercase">
+          Welcome to Dashboard
+        </h1>
+        <p className="text-slate-500 font-medium">
+          Here's what's happening with your streaming platform today
+        </p>
+      </div>
+      <div className="grid grid-cols-1 gap-4 px-4 lg:px-6 @xl/main:grid-cols-2 @5xl/main:grid-cols-4">
+        {cards.map((card) => (
+          <Card
+            key={card.title}
+            className="bg-white shadow-xs border-slate-100 p-6 rounded-[1.5rem]"
+          >
+            <div className="flex items-center justify-between mb-4">
+              <p className="text-sm font-bold text-slate-400 uppercase tracking-wider">
+                {card.title}
+              </p>
+              <div className="flex size-10 items-center justify-center rounded-xl bg-slate-50 text-slate-400">
                 {card.icon}
               </div>
-            </CardAction>
-          </CardHeader>
-          <CardContent>
-            <div className="flex items-center gap-1 text-sm font-medium text-green-600">
-              <TrendingUpIcon className="size-4" />
-              {card.trend}
             </div>
-          </CardContent>
-        </Card>
-      ))}
+            <div className="flex flex-col gap-1">
+              <p className="text-3xl font-black text-slate-900 tracking-tight">
+                {card.value}
+              </p>
+              <div className="flex items-center gap-1 text-xs font-bold text-green-600">
+                <TrendingUpIcon className="size-3.5" />
+                {card.trend}
+              </div>
+            </div>
+          </Card>
+        ))}
+      </div>
     </div>
   );
 }
