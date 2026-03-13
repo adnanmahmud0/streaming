@@ -1,6 +1,5 @@
 "use client";
 
-import * as React from "react";
 import Link from "next/link";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
@@ -39,7 +38,7 @@ export default function MovieUploadPage() {
           Movies
         </Link>
         <ChevronRightIcon className="size-4" />
-        <span className="text-slate-900 font-medium font-bold">
+        <span className="text-slate-900 font-medium">
           Upload Movie
         </span>
       </div>
@@ -83,7 +82,7 @@ export default function MovieUploadPage() {
                 </Label>
                 <textarea
                   placeholder="Write a brief overview of the movie..."
-                  className="min-h-[180px] p-6 bg-slate-50 border-none text-lg font-medium text-slate-600 rounded-xl outline-none focus:ring-2 focus:ring-[#F9253B]/20 transition-all resize-none"
+                  className="min-h-45 p-6 bg-slate-50 border-none text-lg font-medium text-slate-600 rounded-xl outline-none focus:ring-2 focus:ring-[#F9253B]/20 transition-all resize-none"
                 />
               </div>
             </CardContent>
@@ -237,7 +236,7 @@ export default function MovieUploadPage() {
                 Portrait Poster
               </CardTitle>
             </CardHeader>
-            <div className="relative aspect-[3/4.5] border-2 border-dashed border-slate-200 rounded-2xl flex flex-col items-center justify-center gap-4 bg-slate-50 hover:bg-slate-100/50 transition-colors cursor-pointer group">
+            <div className="relative aspect-3/4.5 border-2 border-dashed border-slate-200 rounded-2xl flex flex-col items-center justify-center gap-4 bg-slate-50 hover:bg-slate-100/50 transition-colors cursor-pointer group">
               <div className="size-16 bg-white rounded-2xl flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform">
                 <UploadCloudIcon className="size-8 text-slate-400" />
               </div>

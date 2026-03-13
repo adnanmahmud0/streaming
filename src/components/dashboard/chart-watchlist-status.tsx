@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { Label, Pie, PieChart, ResponsiveContainer, Cell } from "recharts";
+import { Pie, PieChart, Cell } from "recharts";
 
 import {
   Card,
@@ -69,7 +69,7 @@ export function ChartWatchlistStatus() {
         <CardAction>
           <Select defaultValue="this-week">
             <SelectTrigger
-              className="ml-auto h-10 w-[130px] rounded-xl bg-slate-50 border-none text-slate-600 font-bold"
+              className="ml-auto h-10 w-32.5 rounded-xl bg-slate-50 border-none text-slate-600 font-bold"
               aria-label="Select time range"
             >
               <SelectValue placeholder="Select" />
@@ -91,7 +91,7 @@ export function ChartWatchlistStatus() {
       <CardContent className="flex-1 flex flex-col items-center justify-center p-8">
         <ChartContainer
           config={chartConfig}
-          className="mx-auto aspect-square h-[320px] w-full"
+          className="mx-auto aspect-square h-80 w-full"
         >
           <PieChart>
             <ChartTooltip

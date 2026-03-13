@@ -1,6 +1,5 @@
 "use client";
 
-import * as React from "react";
 import Link from "next/link";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
@@ -114,7 +113,7 @@ export default function NewSeriesEpisodeUploadPage() {
                 </Label>
                 <textarea
                   placeholder="Enter episode description/synopsis"
-                  className="min-h-[160px] p-6 bg-white border border-slate-200 text-lg font-medium text-slate-600 rounded-xl outline-none focus:ring-2 focus:ring-[#F9253B]/20 transition-all resize-none"
+                  className="min-h-40 p-6 bg-white border border-slate-200 text-lg font-medium text-slate-600 rounded-xl outline-none focus:ring-2 focus:ring-[#F9253B]/20 transition-all resize-none"
                 />
               </div>
 

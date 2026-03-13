@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 
 import { useEditor, EditorContent } from "@tiptap/react";
@@ -248,10 +249,10 @@ export function Editor({ content, onChange, placeholder }: EditorProps) {
       </div>
 
       {/* Content area */}
-      <div className="flex-1 min-h-[400px] p-6 cursor-text">
+      <div className="flex-1 min-h-100 p-6 cursor-text">
         <EditorContent
           editor={editor}
-          className="prose prose-slate max-w-none focus:outline-none min-h-[400px] text-slate-600 text-lg font-medium leading-relaxed"
+          className="prose prose-slate max-w-none focus:outline-none min-h-100 text-slate-600 text-lg font-medium leading-relaxed"
         />
       </div>
 

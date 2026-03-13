@@ -4,10 +4,6 @@ import * as React from "react";
 import Image from "next/image";
 import {
   Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -112,7 +108,7 @@ export default function SettingsPage() {
                     >
                       Change Photo
                     </Button>
-                    <p className="text-xs text-slate-400 font-medium max-w-[200px]">
+                    <p className="text-xs text-slate-400 font-medium max-w-50">
                       Recommended: JPG, PNG. Max size of 800KB.
                     </p>
                   </div>

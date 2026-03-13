@@ -3,11 +3,6 @@
 import * as React from "react";
 import {
   Card,
-  CardAction,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
 } from "@/components/ui/card";
 import {
   Table,
@@ -21,7 +16,6 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import {
   SearchIcon,
-  FilterIcon,
   TrendingUpIcon,
   UsersIcon,
   DollarSignIcon,

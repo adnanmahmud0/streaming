@@ -16,8 +16,6 @@ import {
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
-  ChartLegend,
-  ChartLegendContent,
   type ChartConfig,
 } from "@/components/ui/chart";
 import {
@@ -212,7 +210,7 @@ export function ChartAreaInteractive() {
       <CardContent className="p-8">
         <ChartContainer
           config={chartConfig}
-          className="aspect-auto h-[400px] w-full"
+          className="aspect-auto h-100 w-full"
         >
           <AreaChart
             data={filteredData}

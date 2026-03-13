@@ -1,6 +1,5 @@
 "use client";
 
-import * as React from "react";
 import Link from "next/link";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
@@ -108,7 +107,7 @@ export default function SeriesUploadPage() {
                 </Label>
                 <textarea
                   placeholder="Enter show synopsis..."
-                  className="min-h-[160px] p-6 bg-white border border-slate-200 text-lg font-medium text-slate-600 rounded-xl outline-none focus:ring-2 focus:ring-[#F9253B]/20 transition-all resize-none"
+                  className="min-h-40 p-6 bg-white border border-slate-200 text-lg font-medium text-slate-600 rounded-xl outline-none focus:ring-2 focus:ring-[#F9253B]/20 transition-all resize-none"
                 />
               </div>
 
@@ -216,7 +215,7 @@ export default function SeriesUploadPage() {
                 Cover Poster
               </CardTitle>
             </CardHeader>
-            <div className="relative aspect-[3/4] border-2 border-dashed border-slate-200 rounded-2xl flex flex-col items-center justify-center gap-4 bg-slate-50 hover:bg-slate-100/50 transition-colors cursor-pointer group">
+            <div className="relative aspect-3/4 border-2 border-dashed border-slate-200 rounded-2xl flex flex-col items-center justify-center gap-4 bg-slate-50 hover:bg-slate-100/50 transition-colors cursor-pointer group">
               <div className="size-16 bg-white rounded-2xl flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform">
                 <UploadCloudIcon className="size-8 text-slate-400" />
               </div>

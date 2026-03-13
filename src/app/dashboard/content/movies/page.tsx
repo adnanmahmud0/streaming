@@ -5,11 +5,6 @@ import Image from "next/image";
 import Link from "next/link";
 import {
   Card,
-  CardAction,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
 } from "@/components/ui/card";
 import {
   Table,
@@ -31,7 +26,6 @@ import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
 import {
   SearchIcon,
-  FilterIcon,
   PlusIcon,
   Trash2Icon,
   PencilIcon,

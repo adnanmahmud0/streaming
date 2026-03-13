@@ -238,7 +238,7 @@ export default function UsersPage() {
     <div className="flex flex-col gap-8 py-8 md:gap-10 md:py-10">
       {/* Add User Dialog */}
       <Dialog open={isAddUserOpen} onOpenChange={setIsAddUserOpen}>
-        <DialogContent className="sm:max-w-[425px] bg-white rounded-3xl p-8 border-none shadow-2xl">
+        <DialogContent className="sm:max-w-106.25 bg-white rounded-3xl p-8 border-none shadow-2xl">
           <DialogHeader className="mb-6">
             <DialogTitle className="text-2xl font-black text-slate-900">
               Add New User
@@ -344,7 +344,7 @@ export default function UsersPage() {
 
       {/* Edit User Dialog */}
       <Dialog open={isEditUserOpen} onOpenChange={setIsEditUserOpen}>
-        <DialogContent className="sm:max-w-[425px] bg-white rounded-3xl p-8 border-none shadow-2xl">
+        <DialogContent className="sm:max-w-106.25 bg-white rounded-3xl p-8 border-none shadow-2xl">
           <DialogHeader className="mb-6">
             <DialogTitle className="text-2xl font-black text-slate-900">
               Edit User

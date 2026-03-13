@@ -2,9 +2,7 @@
 
 import * as React from "react";
 import Image from "next/image";
-import Link from "next/link";
-import { useParams } from "next/navigation";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import {
   Select,
@@ -29,7 +27,6 @@ import {
 } from "recharts";
 import {
   DownloadIcon,
-  ChevronDownIcon,
   TrendingUpIcon,
   TrendingDownIcon,
   ActivityIcon,
@@ -137,8 +134,7 @@ const revenueByCategory = [
 
 export default function MovieOverviewPage() {
   const [activeTab, setActiveTab] = React.useState("overview");
-  const params = useParams();
-  const movieId = params.id;
+
 
   return (
     <div className="flex flex-col gap-8 py-8 px-4 lg:px-8 bg-[#fafafa] min-h-screen">
@@ -169,7 +165,7 @@ export default function MovieOverviewPage() {
 
           <div className="flex items-center gap-3">
             <Select defaultValue="since-published">
-              <SelectTrigger className="h-10 w-[180px] bg-white border-slate-200 rounded-xl text-sm font-medium">
+              <SelectTrigger className="h-10 w-45 bg-white border-slate-200 rounded-xl text-sm font-medium">
                 <SelectValue placeholder="Date Range" />
               </SelectTrigger>
               <SelectContent>
@@ -248,7 +244,7 @@ export default function MovieOverviewPage() {
                   <div className="flex items-center justify-between mb-8">
                     <h3 className="text-lg font-black text-slate-800">Performance</h3>
                   </div>
-                  <div className="h-[300px] w-full">
+                  <div className="h-75 w-full">
                     <ResponsiveContainer width="100%" height="100%">
                       <LineChart data={performanceData}>
                         <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f1f5f9" />
@@ -349,7 +345,7 @@ export default function MovieOverviewPage() {
 
             <Card className="shadow-none border-slate-200 bg-white p-8 rounded-[1.5rem]">
               <h3 className="text-lg font-black text-slate-800 mb-8">Watch Time Growth</h3>
-              <div className="h-[300px] w-full">
+              <div className="h-75 w-full">
                 <ResponsiveContainer width="100%" height="100%">
                   <LineChart data={performanceData}>
                     <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f1f5f9" />
@@ -400,7 +396,7 @@ export default function MovieOverviewPage() {
                   <p className="text-[10px] font-bold text-slate-400 mt-1">Below typical</p>
                 </div>
               </div>
-              <div className="h-[300px] w-full">
+              <div className="h-75 w-full">
                 <ResponsiveContainer width="100%" height="100%">
                   <LineChart data={retentionData}>
                     <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f1f5f9" />
@@ -522,7 +518,7 @@ export default function MovieOverviewPage() {
                 </Button>
               </div>
 
-              <div className="h-[350px] w-full">
+              <div className="h-87.5 w-full">
                 <h3 className="text-lg font-black text-slate-800 mb-6">Revenue Trend</h3>
                 <ResponsiveContainer width="100%" height="100%">
                   <LineChart data={revenueTrendData}>
