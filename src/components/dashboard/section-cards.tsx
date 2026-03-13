@@ -51,7 +51,7 @@ export function SectionCards() {
           Welcome to Dashboard
         </h1>
         <p className="text-slate-500 font-medium">
-          Here's what's happening with your streaming platform today
+          {"Here's what's happening with your streaming platform today"}
         </p>
       </div>
       <div className="grid grid-cols-1 gap-4 px-4 lg:px-6 @xl/main:grid-cols-2 @5xl/main:grid-cols-4">

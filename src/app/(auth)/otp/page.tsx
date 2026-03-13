@@ -106,7 +106,7 @@ export default function OTPPage() {
 
             <div className="flex flex-col items-center lg:items-start gap-4">
               <p className="text-sm text-slate-500">
-                Didn't receive the code?{" "}
+                {" Didn't receive the code? "}
                 <button
                   type="button"
                   className="text-[#F9253B] font-bold hover:underline"
