@@ -4,9 +4,7 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-} from "@/components/ui/card";
+import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import {
   Select,
@@ -34,7 +32,6 @@ import {
   CrownIcon,
   Trash2Icon,
   PencilIcon,
-  UserPlusIcon,
 } from "lucide-react";
 import React from "react";
 import {
@@ -161,16 +158,8 @@ export default function UsersPage() {
   const [searchQuery, setSearchQuery] = React.useState("");
   const [statusFilter, setStatusFilter] = React.useState("filter");
   const [currentPage, setCurrentPage] = React.useState(1);
-  const [isAddUserOpen, setIsAddUserOpen] = React.useState(false);
   const [isEditUserOpen, setIsEditUserOpen] = React.useState(false);
   const [editingUser, setEditingUser] = React.useState<any>(null);
-  const [newUser, setNewUser] = React.useState({
-    name: "",
-    email: "",
-    subscription: "Free",
-    status: "Active",
-    coins: 0,
-  });
 
   const filteredUsers = users.filter((user) => {
     const matchesSearch =
@@ -180,29 +169,6 @@ export default function UsersPage() {
       statusFilter === "filter" || user.status.toLowerCase() === statusFilter;
     return matchesSearch && matchesStatus;
   });
-
-  const handleAddUser = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!newUser.name || !newUser.email) {
-      toast.error("Please fill in all required fields");
-      return;
-    }
-    const user = {
-      ...newUser,
-      id: Date.now(),
-      avatar: `https://api.dicebear.com/7.x/initials/svg?seed=${newUser.name}`,
-    };
-    setUsers([user, ...users]);
-    setIsAddUserOpen(false);
-    setNewUser({
-      name: "",
-      email: "",
-      subscription: "Free",
-      status: "Active",
-      coins: 0,
-    });
-    toast.success("User added successfully");
-  };
 
   const handleEditUser = (e: React.FormEvent) => {
     e.preventDefault();
@@ -236,112 +202,6 @@ export default function UsersPage() {
 
   return (
     <div className="flex flex-col gap-8 py-8 md:gap-10 md:py-10">
-      {/* Add User Dialog */}
-      <Dialog open={isAddUserOpen} onOpenChange={setIsAddUserOpen}>
-        <DialogContent className="sm:max-w-106.25 bg-white rounded-3xl p-8 border-none shadow-2xl">
-          <DialogHeader className="mb-6">
-            <DialogTitle className="text-2xl font-black text-slate-900">
-              Add New User
-            </DialogTitle>
-            <DialogDescription className="text-slate-500 font-medium">
-              Create a new user account for your platform
-            </DialogDescription>
-          </DialogHeader>
-          <form onSubmit={handleAddUser} className="space-y-6">
-            <div className="space-y-4">
-              <div className="space-y-2">
-                <Label
-                  htmlFor="name"
-                  className="text-sm font-bold text-slate-700"
-                >
-                  Full Name
-                </Label>
-                <Input
-                  id="name"
-                  value={newUser.name}
-                  onChange={(e) =>
-                    setNewUser({ ...newUser, name: e.target.value })
-                  }
-                  placeholder="Sarah Johnson"
-                  className="h-12 bg-slate-50 border-none rounded-xl px-4 focus:ring-2 focus:ring-[#F9253B]/20"
-                />
-              </div>
-              <div className="space-y-2">
-                <Label
-                  htmlFor="email"
-                  className="text-sm font-bold text-slate-700"
-                >
-                  Email Address
-                </Label>
-                <Input
-                  id="email"
-                  type="email"
-                  value={newUser.email}
-                  onChange={(e) =>
-                    setNewUser({ ...newUser, email: e.target.value })
-                  }
-                  placeholder="sarah@example.com"
-                  className="h-12 bg-slate-50 border-none rounded-xl px-4 focus:ring-2 focus:ring-[#F9253B]/20"
-                />
-              </div>
-              <div className="grid grid-cols-2 gap-4">
-                <div className="space-y-2">
-                  <Label className="text-sm font-bold text-slate-700">
-                    Subscription
-                  </Label>
-                  <Select
-                    value={newUser.subscription}
-                    onValueChange={(v) =>
-                      setNewUser({ ...newUser, subscription: v })
-                    }
-                  >
-                    <SelectTrigger className="h-12 bg-slate-50 border-none rounded-xl">
-                      <SelectValue />
-                    </SelectTrigger>
-                    <SelectContent className="bg-white rounded-xl border-slate-100">
-                      <SelectItem value="Free">Free</SelectItem>
-                      <SelectItem value="Premium">Premium</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-                <div className="space-y-2">
-                  <Label className="text-sm font-bold text-slate-700">
-                    Initial Coins
-                  </Label>
-                  <Input
-                    type="number"
-                    value={newUser.coins}
-                    onChange={(e) =>
-                      setNewUser({
-                        ...newUser,
-                        coins: parseInt(e.target.value) || 0,
-                      })
-                    }
-                    className="h-12 bg-slate-50 border-none rounded-xl px-4"
-                  />
-                </div>
-              </div>
-            </div>
-            <DialogFooter className="pt-4">
-              <Button
-                type="button"
-                variant="outline"
-                onClick={() => setIsAddUserOpen(false)}
-                className="h-12 px-6 rounded-xl font-bold border-slate-200"
-              >
-                Cancel
-              </Button>
-              <Button
-                type="submit"
-                className="h-12 px-8 bg-[#F9253B] hover:bg-red-600 text-white font-bold rounded-xl shadow-lg shadow-red-500/20"
-              >
-                Create User
-              </Button>
-            </DialogFooter>
-          </form>
-        </DialogContent>
-      </Dialog>
-
       {/* Edit User Dialog */}
       <Dialog open={isEditUserOpen} onOpenChange={setIsEditUserOpen}>
         <DialogContent className="sm:max-w-106.25 bg-white rounded-3xl p-8 border-none shadow-2xl">
@@ -461,13 +321,6 @@ export default function UsersPage() {
             Manage users, roles, and access permissions
           </p>
         </div>
-        <Button
-          onClick={() => setIsAddUserOpen(true)}
-          className="h-12 bg-[#F9253B] hover:bg-red-600 text-white font-bold rounded-xl gap-2 px-6 shadow-lg shadow-red-500/20"
-        >
-          <UserPlusIcon className="size-5" />
-          Add New User
-        </Button>
       </div>
 
       {/* Stats Cards */}

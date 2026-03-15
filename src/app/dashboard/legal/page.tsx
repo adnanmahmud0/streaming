@@ -20,8 +20,6 @@ const initialDocs = {
     "<h1>Terms and Conditions</h1><p>Welcome to our streaming platform. By using our service, you agree to these terms...</p>",
   privacy:
     "<h1>Privacy Policy</h1><p>We value your privacy. This policy explains how we collect and use your data...</p>",
-  refund:
-    "<h1>Refund Policy</h1><p>Our refund policy ensures fair treatment for all subscribers...</p>",
   about:
     "<h1>About Us</h1><p>We are a leading streaming service provider dedicated to bringing you the best content...</p>",
 };
@@ -79,7 +77,6 @@ export default function LegalPage() {
                 <SelectContent className="bg-white rounded-xl border-slate-100">
                   <SelectItem value="terms">Term & Condition</SelectItem>
                   <SelectItem value="privacy">Privacy Policy</SelectItem>
-                  <SelectItem value="refund">Refund Policy</SelectItem>
                   <SelectItem value="about">About Us</SelectItem>
                 </SelectContent>
               </Select>
