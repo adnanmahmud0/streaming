@@ -3,9 +3,7 @@
 import * as React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import {
-  Card,
-} from "@/components/ui/card";
+import { Card } from "@/components/ui/card";
 import {
   Table,
   TableBody,
@@ -80,7 +78,7 @@ const initialSeriesData = [
     image: "https://api.dicebear.com/7.x/initials/svg?seed=TW",
     seasons: 3,
     status: "Published",
-    subscribe: "Premium",
+    subscribe: "Weekly",
     active: true,
   },
   {
@@ -89,7 +87,7 @@ const initialSeriesData = [
     image: "https://api.dicebear.com/7.x/initials/svg?seed=ST",
     seasons: 4,
     status: "Published",
-    subscribe: "Free, Weekly Pass Pro",
+    subscribe: "Monthly",
     active: true,
   },
   {
@@ -98,7 +96,7 @@ const initialSeriesData = [
     image: "https://api.dicebear.com/7.x/initials/svg?seed=BB",
     seasons: 5,
     status: "Published",
-    subscribe: "Weekly Pass Pro",
+    subscribe: "Yearly",
     active: true,
   },
   {
@@ -107,7 +105,7 @@ const initialSeriesData = [
     image: "https://api.dicebear.com/7.x/initials/svg?seed=DK",
     seasons: 3,
     status: "Draft",
-    subscribe: "Premium",
+    subscribe: "Free",
     active: false,
   },
 ];
@@ -116,6 +114,7 @@ export default function SeriesPage() {
   const [seriesList, setSeriesList] = React.useState(initialSeriesData);
   const [searchQuery, setSearchQuery] = React.useState("");
   const [statusFilter, setStatusFilter] = React.useState("filter");
+  const [planFilter, setPlanFilter] = React.useState("all");
 
   const filteredSeries = seriesList.filter((series) => {
     const matchesSearch = series.title
@@ -124,7 +123,10 @@ export default function SeriesPage() {
     const matchesStatus =
       statusFilter === "filter" ||
       series.status.toLowerCase() === statusFilter.toLowerCase();
-    return matchesSearch && matchesStatus;
+    const matchesPlan =
+      planFilter === "all" ||
+      series.subscribe.toLowerCase().includes(planFilter.toLowerCase());
+    return matchesSearch && matchesStatus && matchesPlan;
   });
 
   const handleDeleteSeries = (id: number) => {
@@ -206,11 +208,23 @@ export default function SeriesPage() {
             </div>
 
             <div className="flex items-center gap-3">
+              <Select value={planFilter} onValueChange={setPlanFilter}>
+                <SelectTrigger className="h-14 w-40 bg-slate-50 border-none rounded-xl font-bold text-slate-600">
+                  <SelectValue placeholder="Plan" />
+                </SelectTrigger>
+                <SelectContent className="bg-white rounded-xl border-slate-100 shadow-xl">
+                  <SelectItem value="all">All Plans</SelectItem>
+                  <SelectItem value="weekly">Weekly</SelectItem>
+                  <SelectItem value="monthly">Monthly</SelectItem>
+                  <SelectItem value="yearly">Yearly</SelectItem>
+                  <SelectItem value="free">Free</SelectItem>
+                </SelectContent>
+              </Select>
               <Select value={statusFilter} onValueChange={setStatusFilter}>
                 <SelectTrigger className="h-14 w-40 bg-slate-50 border-none rounded-xl font-bold text-slate-600">
-                  <SelectValue placeholder="Filter" />
+                  <SelectValue placeholder="Status" />
                 </SelectTrigger>
-                <SelectContent className="bg-white rounded-xl border-slate-100">
+                <SelectContent className="bg-white rounded-xl border-slate-100 shadow-xl">
                   <SelectItem value="filter">All Status</SelectItem>
                   <SelectItem value="published">Published</SelectItem>
                   <SelectItem value="draft">Draft</SelectItem>
@@ -275,8 +289,20 @@ export default function SeriesPage() {
                         {series.status}
                       </span>
                     </TableCell>
-                    <TableCell className="text-slate-500 font-black text-[10px] uppercase tracking-widest">
-                      {series.subscribe}
+                    <TableCell className="text-center">
+                      <span
+                        className={`px-3 py-1 rounded-full border text-[10px] font-black uppercase tracking-widest ${
+                          series.subscribe.includes("Weekly")
+                            ? "bg-red-50 text-[#F9253B] border-red-100"
+                            : series.subscribe.includes("Monthly")
+                              ? "bg-amber-50 text-amber-600 border-amber-100"
+                              : series.subscribe.includes("Yearly")
+                                ? "bg-slate-900 text-white border-slate-800"
+                                : "bg-slate-50 text-slate-400 border-slate-100"
+                        }`}
+                      >
+                        {series.subscribe}
+                      </span>
                     </TableCell>
                     <TableCell className="text-right pr-6">
                       <div className="flex items-center justify-end gap-3">

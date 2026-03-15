@@ -1,9 +1,7 @@
 "use client";
 
 import * as React from "react";
-import {
-  Card,
-} from "@/components/ui/card";
+import { Card } from "@/components/ui/card";
 import {
   Table,
   TableBody,
@@ -71,16 +69,16 @@ const initialSubscribes = [
   {
     id: 1,
     email: "sadat@gmail.com",
-    plan: "Premium",
+    plan: "Weekly",
     status: "Paused",
     startDate: "25/02/2026",
-    billingCycle: "Monthly",
+    billingCycle: "Weekly",
     amount: "$2500",
   },
   {
     id: 2,
     email: "john@example.com",
-    plan: "Enterprise",
+    plan: "Yearly",
     status: "Cancelled",
     startDate: "20/02/2026",
     billingCycle: "Yearly",
@@ -89,7 +87,7 @@ const initialSubscribes = [
   {
     id: 3,
     email: "sarah@gmail.com",
-    plan: "Premium",
+    plan: "Monthly",
     status: "Active",
     startDate: "15/02/2026",
     billingCycle: "Monthly",
@@ -107,16 +105,16 @@ const initialSubscribes = [
   {
     id: 5,
     email: "lisa@outlook.com",
-    plan: "Premium",
+    plan: "Weekly",
     status: "Paused",
     startDate: "05/02/2026",
-    billingCycle: "Monthly",
+    billingCycle: "Weekly",
     amount: "$2500",
   },
   {
     id: 6,
     email: "emma@gmail.com",
-    plan: "Premium",
+    plan: "Monthly",
     status: "Active",
     startDate: "01/02/2026",
     billingCycle: "Monthly",
@@ -125,7 +123,7 @@ const initialSubscribes = [
   {
     id: 7,
     email: "david@email.com",
-    plan: "Enterprise",
+    plan: "Yearly",
     status: "Active",
     startDate: "28/01/2026",
     billingCycle: "Yearly",
@@ -137,6 +135,7 @@ export default function SubscribesPage() {
   const [subscribesList, setSubscribesList] = React.useState(initialSubscribes);
   const [searchQuery, setSearchQuery] = React.useState("");
   const [statusFilter, setStatusFilter] = React.useState("filter");
+  const [planFilter, setPlanFilter] = React.useState("all");
 
   const filteredSubscribes = subscribesList.filter((sub) => {
     const matchesSearch = sub.email
@@ -145,7 +144,10 @@ export default function SubscribesPage() {
     const matchesStatus =
       statusFilter === "filter" ||
       sub.status.toLowerCase() === statusFilter.toLowerCase();
-    return matchesSearch && matchesStatus;
+    const matchesPlan =
+      planFilter === "all" ||
+      sub.plan.toLowerCase() === planFilter.toLowerCase();
+    return matchesSearch && matchesStatus && matchesPlan;
   });
 
   const handleDeleteSub = (id: number) => {
@@ -208,11 +210,23 @@ export default function SubscribesPage() {
               />
             </div>
             <div className="flex items-center gap-3">
+              <Select value={planFilter} onValueChange={setPlanFilter}>
+                <SelectTrigger className="h-14 w-40 bg-slate-50 border-none rounded-xl font-bold text-slate-600">
+                  <SelectValue placeholder="Plan" />
+                </SelectTrigger>
+                <SelectContent className="bg-white rounded-xl border-slate-100 shadow-xl">
+                  <SelectItem value="all">All Plans</SelectItem>
+                  <SelectItem value="weekly">Weekly</SelectItem>
+                  <SelectItem value="monthly">Monthly</SelectItem>
+                  <SelectItem value="yearly">Yearly</SelectItem>
+                  <SelectItem value="free">Free</SelectItem>
+                </SelectContent>
+              </Select>
               <Select value={statusFilter} onValueChange={setStatusFilter}>
                 <SelectTrigger className="h-14 w-40 bg-slate-50 border-none rounded-xl font-bold text-slate-600">
-                  <SelectValue placeholder="Filter" />
+                  <SelectValue placeholder="Status" />
                 </SelectTrigger>
-                <SelectContent className="bg-white rounded-xl border-slate-100">
+                <SelectContent className="bg-white rounded-xl border-slate-100 shadow-xl">
                   <SelectItem value="filter">All Status</SelectItem>
                   <SelectItem value="active">Active</SelectItem>
                   <SelectItem value="paused">Paused</SelectItem>
@@ -260,7 +274,15 @@ export default function SubscribesPage() {
                     </TableCell>
                     <TableCell className="text-center font-black text-[10px] uppercase tracking-widest">
                       <span
-                        className={`px-3 py-1 rounded-full ${sub.plan === "Premium" ? "bg-red-50 text-[#F9253B]" : sub.plan === "Enterprise" ? "bg-slate-900 text-white" : "bg-slate-100 text-slate-500"}`}
+                        className={`px-3 py-1 rounded-full border ${
+                          sub.plan === "Weekly"
+                            ? "bg-red-50 text-[#F9253B] border-red-100"
+                            : sub.plan === "Monthly"
+                              ? "bg-amber-50 text-amber-600 border-amber-100"
+                              : sub.plan === "Yearly"
+                                ? "bg-slate-900 text-white border-slate-800"
+                                : "bg-slate-50 text-slate-400 border-slate-100"
+                        }`}
                       >
                         {sub.plan}
                       </span>
