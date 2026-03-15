@@ -60,7 +60,8 @@ export default function EpisodeUploadPage() {
             Add New Episode
           </h1>
           <p className="text-slate-500 text-lg">
-            Add a new episode to <span className="font-bold text-slate-700">{seriesTitle}</span>
+            Add a new episode to{" "}
+            <span className="font-bold text-slate-700">{seriesTitle}</span>
           </p>
         </div>
       </div>
@@ -190,7 +191,9 @@ export default function EpisodeUploadPage() {
               </div>
               <div className="text-center px-4">
                 <p className="font-bold text-slate-700">Upload Video File</p>
-                <p className="text-xs text-slate-400 mt-1">MP4, MKV up to 5GB</p>
+                <p className="text-xs text-slate-400 mt-1">
+                  MP4, MKV up to 5GB
+                </p>
               </div>
             </div>
           </Card>
