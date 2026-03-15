@@ -164,14 +164,14 @@ export default function EpisodeUploadPage() {
                 Episode Thumbnail
               </CardTitle>
             </CardHeader>
-            <div className="relative aspect-video border-2 border-dashed border-slate-200 rounded-2xl flex flex-col items-center justify-center gap-4 bg-slate-50 hover:bg-slate-100/50 transition-colors cursor-pointer group">
+            <div className="relative aspect-[3/4.5] border-2 border-dashed border-slate-200 rounded-2xl flex flex-col items-center justify-center gap-4 bg-slate-50 hover:bg-slate-100/50 transition-colors cursor-pointer group">
               <div className="size-12 bg-white rounded-xl flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform">
                 <UploadCloudIcon className="size-6 text-slate-400" />
               </div>
               <div className="text-center px-4">
                 <p className="font-bold text-slate-700">Upload Image</p>
-                <p className="text-xs text-slate-400 mt-1">
-                  Recommended 1280×720
+                <p className="text-xs text-slate-400 mt-1 uppercase font-black tracking-widest">
+                  900 × 1200 Recommended
                 </p>
               </div>
             </div>
